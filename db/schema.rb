@@ -13,4 +13,10 @@
 
 ActiveRecord::Schema.define(:version => 0) do
 
+  create_table "popsicles", :primary_key => "pop_id", :force => true do |t|
+    t.string  "flavor", :limit => 50, :null => false
+    t.integer "amount",               :null => false
+    t.string  "size",   :limit => 10
+  end
+
 end
