@@ -11,12 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20140501171559) do
 
   create_table "popsicles", :primary_key => "pop_id", :force => true do |t|
     t.string  "flavor", :limit => 50, :null => false
     t.integer "amount",               :null => false
     t.string  "size",   :limit => 10
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "password_digest"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end
