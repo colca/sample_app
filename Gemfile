@@ -4,7 +4,7 @@ gem 'rails', '3.2.3'
 gem 'bootstrap-sass', '2.0.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'pg', '0.12.2'
-
+gem 'rails_12factor', group: :production
  
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -32,7 +32,7 @@ gem 'jquery-rails', '2.0.1'
 
 group :test do
 gem 'capybara', '1.1.2'
-gem 'rspec-rails', '2.9.0'
+#gem 'rspec-rails', '2.9.0'
 gem 'rb-inotify', '0.8.8'
 gem 'libnotify', '0.5.9'
 gem 'guard-spork', '0.3.2'
