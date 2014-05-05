@@ -5,6 +5,7 @@ gem 'bootstrap-sass', '2.0.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'pg', '0.12.2'
 gem 'rails_12factor', group: :production
+#gem 'sprockets_better_errors'
  
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
