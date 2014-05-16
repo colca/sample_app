@@ -2,11 +2,14 @@
 #
 # Table name: users
 #
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  id              :integer         not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  created_at      :datetime        not null
+#  updated_at      :datetime        not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean         default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -19,7 +22,12 @@ class User < ActiveRecord::Base
                                    class_name: "Relationship", 
                                    dependent:  :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
+
+  has_many :user_cat_relationships, foreign_key: "user_id", dependent: :destroy
+  has_many :categories, through: :user_cat_relationships, source: :category
   
+  accepts_nested_attributes_for :categories
+
   before_save { |user| user.email = email.downcase } 
   before_save :create_remember_token
   validates :name, presence: true, length: { maximum: 50 }
@@ -44,6 +52,18 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
+  end
+
+  def followCat!(category)
+    user_cat_relationships.create!(category_id: category.id)
+  end
+
+  def followingCat?(category)
+    user_cat_relationships.find_by_category_id(category.id)
+  end
+
+  def unfollowCat!(category)
+    user_cat_relationships.find_by_category_id(category.id).destroy
   end
 
   private

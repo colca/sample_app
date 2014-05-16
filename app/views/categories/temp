@@ -1,0 +1,10 @@
+
+    <%= f.fields_for :categories, category do |c| %>
+      <%= c.fields_for :user_cat_relationships, current_user.user_catt_relationships.build(category_id: category.id) do |r| %>
+         <%= r.hidden_field :category_id %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>

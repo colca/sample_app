@@ -1,0 +1,25 @@
+<% provide(:title, 'All Dance Categories') %>
+<h1>Dance Categories</h1>
+ <ul>
+   
+  <% @categories.each do |category| %>
+    <li>
+    <%= category.cName %> <br>
+    <% if @user.followingCat?(category) %>
+       <%= form_for(@user.user_cat_relationships.find_by_category_id(category), html: { method: :delete }) do |f| %>
+          <%= f.submit "Unfollow", class: "btn btn-large" %>
+       <% end %>
+    <% else %>
+       <%= form_for(@user.user_cat_relationships.build(category_id: category.id)) do |f| %>
+          <div><%= f.hidden_field :category_id %></div>
+          <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+        <% end %>
+    <% end %>
+    </li>
+  <% end %>
+ </ul>
+
+
+
+
+  

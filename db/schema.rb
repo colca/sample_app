@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140512164322) do
+ActiveRecord::Schema.define(:version => 20140516173825) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "cName"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "categories", ["cName"], :name => "index_categories_on_cName", :unique => true
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -38,6 +46,23 @@ ActiveRecord::Schema.define(:version => 20140512164322) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "top_cats", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_cat_relationships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "user_cat_relationships", ["category_id"], :name => "index_user_cat_relationships_on_category_id"
+  add_index "user_cat_relationships", ["user_id", "category_id"], :name => "index_user_cat_relationships_on_user_id_and_category_id", :unique => true
+  add_index "user_cat_relationships", ["user_id"], :name => "index_user_cat_relationships_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

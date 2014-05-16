@@ -1,0 +1,6 @@
+<li>
+  <%= link_to category.cName, category %>
+  <% if current_user.admin? && !current_user?(@user) %>
+    | <%= link_to "delete", category, method: :delete, confirm: "You sure?" %>
+  <% end %>
+</li>

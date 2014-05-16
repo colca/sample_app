@@ -1,14 +1,25 @@
 SampleApp::Application.routes.draw do
+  resources :top_cats do
+    get 'user_cat_relationships', on: :member
+  end
+
   #get "users/new"
  
   resources :users do
     member do
       get :following, :followers
+      get :categories
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :categories do
+    member do
+      get :users
+    end
+  end
+  resources :user_cat_relationships, only: [:create, :destroy]
 
   #get "static_pages/home"
   match '/help', to: 'static_pages#help'

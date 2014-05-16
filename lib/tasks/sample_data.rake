@@ -4,6 +4,7 @@ namespace :db do
     make_users
     make_microposts
     make_relationships
+    make_usercatrelationships
   end
 end
 
@@ -39,4 +40,11 @@ def make_relationships
   followers = users[3..40]
   followed_users.each { |followed| user.follow!(followed) }
   followers.each { |follower| follower.follow!(user) }
+end
+
+def make_usercatrelationships
+  users = User.all
+  user = users.first
+  categories = Category.all
+  categories.each { |category| user.followCat!(category) }
 end

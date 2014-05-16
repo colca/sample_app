@@ -1,0 +1,29 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <%= gravatar_for @user %>
+      <h1><%= @user.name %></h1>
+      <span><%= link_to "view my profile", @user %></span>
+      <span><b>Categories:</b> <%= @user.categories.count %></span>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+      <% if @categories.any? %>
+        <div class="categories">
+          <% @categories.each do |category| %>
+            <%= category.cName %>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+  </aside>
+  <div class="span8">
+    <h3><%= @title %></h3>
+    <% if @categories.any? %>
+      <ul class="categories">
+        <%= render @categories %>
+      </ul>
+    <% end %>
+  </div>
+</div>
