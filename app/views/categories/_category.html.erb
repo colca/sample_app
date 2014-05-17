@@ -3,4 +3,13 @@
   <% if current_user.admin? && !current_user?(@user) %>
     | <%= link_to "delete", category, method: :delete, confirm: "You sure?" %>
   <% end %>
+  <ul>
+  <%= @dancers.each do |dancer| %>
+    <% if dancer.category_id == category.id %>
+      <li>
+      <%= dancer.name %>
+      </li>
+    <% end %>
+  <% end %>
+  </ul>
 </li>

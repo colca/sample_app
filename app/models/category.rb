@@ -17,6 +17,7 @@ class Category < ActiveRecord::Base
   #                                        class_name: "UserCatRelationship",
   #                                        dependent: :destroy
   #
+  has_many :dancers, dependent: :destroy
   has_many :user_cat_relationships, foreign_key: "category_id", 
                                     class_name: "UserCatRelationship",
                                     dependent: :destroy

@@ -5,9 +5,30 @@ namespace :db do
     make_microposts
     make_relationships
     make_usercatrelationships
+    make_categories
+    make_dancers
   end
 end
 
+def make_categories
+  cat = Category.create!(cName: "Hiphop")
+  cat2 = Category.create!(cName: "Jazz")
+  cat3 = Category.create!(cName: "Poppin")
+end
+
+def make_dancers
+  categories = Category.all
+  categories.each {|category|
+  10.times do |n|
+    name = Faker::Name.name
+    Dancer.create!(name: name, 
+                   category_id: category.id)
+
+  end
+  }
+end 
+    
+    
 def make_users
     admin = User.create!(name: "Example User",
                  email: "example@railstutorial.org",

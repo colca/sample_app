@@ -9,13 +9,7 @@
     </section>
     <section>
       <%= render 'shared/stats' %>
-      <% if @categories.any? %>
-        <div class="categories">
-          <% @categories.each do |category| %>
-            <%= category.cName %>
-          <% end %>
-        </div>
-      <% end %>
+
     </section>
   </aside>
   <div class="span8">
@@ -23,6 +17,7 @@
     <% if @categories.any? %>
       <ul class="categories">
         <%= render @categories %>
+        
       </ul>
     <% end %>
   </div>

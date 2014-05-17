@@ -9,6 +9,7 @@ SampleApp::Application.routes.draw do
     member do
       get :following, :followers
       get :categories
+      get :dancers
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
@@ -20,6 +21,8 @@ SampleApp::Application.routes.draw do
     end
   end
   resources :user_cat_relationships, only: [:create, :destroy]
+  resources :user_dancer_relationships, only: [:create, :destroy]
+  resources :dancers
 
   #get "static_pages/home"
   match '/help', to: 'static_pages#help'

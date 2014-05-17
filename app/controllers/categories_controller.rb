@@ -8,6 +8,8 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @dancers = @category.dancers.paginate(page: params[:page])
+    @user = current_user
   end
 
 end

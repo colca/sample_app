@@ -1,0 +1,11 @@
+
+      <% if @categories.any? %>
+        <div class="categories">
+          <% @categories.each do |category| %>
+            <%= category.cName %>
+            <% @dancers.each do |dancer| %>
+                <%= dancer.name %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>

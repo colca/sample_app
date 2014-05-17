@@ -66,6 +66,7 @@ class UsersController < ApplicationController
     @title = "Categories"
     @user = User.find(params[:id])
     @categories = @user.categories
+    @dancers = @user.dancers
     render 'show_follow_cat'
   end
 

@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
 
   has_many :user_cat_relationships, foreign_key: "user_id", dependent: :destroy
   has_many :categories, through: :user_cat_relationships, source: :category
+  has_many :user_dancer_relationships, foreign_key: "user_id", dependent: :destroy
+  has_many :dancers, through: :user_dancer_relationships, source: :dancer
   
   accepts_nested_attributes_for :categories
 
@@ -64,6 +66,18 @@ class User < ActiveRecord::Base
 
   def unfollowCat!(category)
     user_cat_relationships.find_by_category_id(category.id).destroy
+  end
+
+  def followingDancer?(dancer)
+    user_dancer_relationships.find_by_dancer_id(dancer.id)
+  end
+
+  def followDancer!(dancer)
+    user_dancer_relationships.create!(dancer_id: dancer.id, category_id: dancer.category_id)
+  end
+
+  def unfollowDancer!(dancer)
+    user_dancer_relationships.find_by_dancer_id(dancer.id).destroy
   end
 
   private
