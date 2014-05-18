@@ -39,9 +39,10 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6}
   validates :password_confirmation, presence: true
 
-  def feed
+  def dancerVideos 
    # Micropost.where("user_id = ?", id)
-   Micropost.from_users_followed_by(self)
+   #Micropost.from_users_followed_by(self)
+   Video.from_dancers_followed_by(self)
   end
 
   def following?(other_user)

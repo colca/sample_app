@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140516225221) do
+ActiveRecord::Schema.define(:version => 20140518170542) do
 
   create_table "categories", :force => true do |t|
     t.string   "cName"
@@ -22,10 +22,8 @@ ActiveRecord::Schema.define(:version => 20140516225221) do
   add_index "categories", ["cName"], :name => "index_categories_on_cName", :unique => true
 
   create_table "dancers", :force => true do |t|
-    t.string   "name"
-    t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string  "name"
+    t.integer "category_id"
   end
 
   add_index "dancers", ["category_id"], :name => "index_dancers_on_category_id"
@@ -55,6 +53,30 @@ ActiveRecord::Schema.define(:version => 20140516225221) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "test", :id => false, :force => true do |t|
+    t.string  "vid",                :limit => nil
+    t.string  "etag",               :limit => nil
+    t.string  "publishedat",        :limit => nil
+    t.string  "channelid",          :limit => nil
+    t.string  "thumbnailsdefault",  :limit => nil
+    t.string  "thumbnailsmedium",   :limit => nil
+    t.string  "thumbnailshigh",     :limit => nil
+    t.string  "thumbnailsstandard", :limit => nil
+    t.string  "channeltitle",       :limit => nil
+    t.integer "youtubecategoryid"
+    t.integer "viewcount"
+    t.integer "likecount"
+    t.integer "dislikecount"
+    t.integer "favoritecount"
+    t.integer "commentcount"
+    t.string  "embedhtml",          :limit => nil
+    t.string  "title",              :limit => nil
+    t.text    "description"
+    t.string  "category",           :limit => nil
+    t.string  "dancer",             :limit => nil
+    t.float   "ratio"
+  end
 
   create_table "top_cats", :force => true do |t|
     t.string   "name"
@@ -98,5 +120,38 @@ ActiveRecord::Schema.define(:version => 20140516225221) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "videos", :id => false, :force => true do |t|
+    t.string   "vid",                 :limit => 1000
+    t.string   "etag",                :limit => 1000
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.string   "channel_id"
+    t.text     "thumbnails_default"
+    t.text     "thumbnails_medium"
+    t.text     "thumbnails_high"
+    t.text     "thumbnails_standard"
+    t.string   "channel_title"
+    t.integer  "youtube_category_id"
+    t.integer  "view_count"
+    t.integer  "like_count"
+    t.integer  "dislike_count"
+    t.integer  "favorite_count"
+    t.integer  "comment_count"
+    t.string   "embed_html",          :limit => 3000
+    t.string   "title",               :limit => 1000
+    t.text     "description"
+    t.string   "category"
+    t.string   "dancer"
+    t.float    "heuristic"
+    t.integer  "relevance"
+    t.integer  "dancer_id"
+    t.integer  "category_id"
+  end
+
+  add_index "videos", ["category_id"], :name => "index_videos_on_category_id"
+  add_index "videos", ["dancer_id"], :name => "index_videos_on_dancer_id"
+  add_index "videos", ["heuristic"], :name => "index_videos_on_heuristic"
+  add_index "videos", ["relevance"], :name => "index_videos_on_relevance"
 
 end

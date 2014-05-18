@@ -1,0 +1,5 @@
+<% if @video_items.any? %>
+  <ul class="videos">
+       <%= render partial: 'shared/video_item', collection: @video_items %>
+  </ul>
+<% end %>
