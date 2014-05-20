@@ -4,8 +4,8 @@
     <section>
       <%= gravatar_for @user %>
       <h1><%= @user.name %></h1>
-      <span><%= link_to "view my profile", @user %></span>
-      <span><b>Categories:</b> <%= @user.categories.count %></span>
+	      <span><%= link_to "view my profile", @user %></span>
+      <span><b>Followed Genres:</b> <%= @user.categories.count %><br><b>Followed Dancers:</b></br> <%= @user.dancers.count %></span>
     </section>
     <section>
       <%= render 'shared/stats' %>
@@ -17,7 +17,6 @@
     <% if @categories.any? %>
       <ul class="categories">
         <%= render @categories %>
-        
       </ul>
     <% end %>
   </div>

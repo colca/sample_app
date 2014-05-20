@@ -4,7 +4,7 @@
    
   <% @categories.each do |category| %>
     <li>
-    <%= link_to category.cName, category %> <br>
+    <h4><b> <%= link_to category.cName, category %></b> </h4><br>
     <% if signed_in? %>
       <% if @user.followingCat?(category) %>
         <%= form_for(@user.user_cat_relationships.find_by_category_id(category), html: { method: :delete }) do |f| %>
