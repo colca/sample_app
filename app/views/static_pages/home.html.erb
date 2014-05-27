@@ -14,16 +14,22 @@
     </div>
   </div>
 <% else %>
-  <div class="center hero-unit">
-    <h1>Welcome to Danceflix</h1>
+
+    <div id="welcome-title">
+      <h1>Welcome to Danceflix</h1>
+    </div>
+  
+    <div id="welcome-subtitle"> 
     <h2>
       Your Personalized Dance Video Station
     </h2>
+    </div>
 
+    <div class="span12" style="text-align:center">
     <%= link_to "Sign up now!", signup_path, 
-                                class: "btn btn-large btn-primary" %>
+                                class: "btn btn-large btn-primary", id: "signup-btn" %>
+    </div>
  
-  </div>
 
 <% end %>
 
