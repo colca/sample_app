@@ -1,6 +1,6 @@
 <% if signed_in? %>
   <div class="row">
-    <aside class="span4">
+    <aside class="span2">
       <section>
          <%= render 'shared/user_info' %>
       </section>
@@ -8,9 +8,22 @@
          <%= render 'shared/stats' %>
       </section>
     </aside>
-    <div class="span8">
+    <div class="span10">
+      <br>
       <h3>Videos From Followed Dancers</h3>
       <%= render 'shared/video' %>
+ 
+      <h3>Videos from Genre</h3>
+     
+      <div class="category-feeds"> 
+      <% if @category1_feeds.any? %>
+        <%= @category1_feeds.count %> 
+       <ul class="list-inline" id="dancer-videos">
+       <%= render partial: 'shared/video_item', collection: @category1_feeds %>
+      </ul>
+      <% end %>
+      </div>
+
     </div>
   </div>
 <% else %>

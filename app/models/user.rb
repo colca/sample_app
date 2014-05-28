@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6}
   validates :password_confirmation, presence: true
 
+  def categoryVideos(cat_id)
+    Video.from_category(self, cat_id)  
+  end   
+
   def dancerVideos 
    # Micropost.where("user_id = ?", id)
    #Micropost.from_users_followed_by(self)
