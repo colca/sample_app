@@ -1,9 +1,8 @@
 <li id="<%= video_item.vid %>">
   <%= link_to video_item.dancer, video_item.dancer %>
+  <br>
   <span class="video">
-    <iframe <%= video_item.embed_html.gsub(/<iframe/, ' ') %>></iframe>
+    <iframe <%= video_item.embed_html.gsub(/640/, '160').gsub(/360/,'90') %>></iframe>
   </span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(video_item.created_at) %> ago.
-  </span>
+
 </li>

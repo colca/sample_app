@@ -299,3 +299,14 @@ aside {
   background: url("http://media.linkmedia.rs/2014/03/girl-hip-hop-dancer-model.jpg") no-repeat scroll 0px 100% / cover transparent;
 }
 
+/* Video List */
+#dancer-videos {
+  width: 640px;
+  display: block;
+  white-space: nowrap;
+  overflow: auto;
+  li {
+    display: inline-block;
+    width: 160px;
+  }
+}

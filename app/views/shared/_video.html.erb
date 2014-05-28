@@ -1,5 +1,5 @@
 <% if @video_items.any? %>
-  <ul class="videos">
+  <ul class="list-inline" id="dancer-videos">
        <%= render partial: 'shared/video_item', collection: @video_items %>
   </ul>
 <% end %>

@@ -1,0 +1,4 @@
+
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(video_item.created_at) %> ago.
+  </span>
