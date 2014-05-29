@@ -1,5 +1,34 @@
 <% if @dancer_video_feeds.any? %>
-  <ul class="list-inline" id="dancer-videos">
-       <%= render partial: 'shared/video_item', collection: @dancer_video_feeds %>
-  </ul>
+      <div class="button-left" id="df-left-button"></div>
+      <div class="button-right" id="df-right-button"></div>
+  <div id="dancer-feeds">
+
+
+      <ul class="video-feeds" id="dancer-feeds-container">
+        <%= render partial: 'shared/video_item', collection: @dancer_video_feeds %>
+      </ul>
+
+  </div>
+<script>
+$(document).ready(function(){
+  var container = $('#dancer-feeds-container');
+  $('#df-right-button').on('click',function(){
+    console.log('check');
+    console.log(container.length);
+    var leftPos = container.position().left;
+    var posNew = leftPos-640;
+    container.css('left',posNew+'px');
+  });
+  $('#df-left-button').on('click',function(){
+    console.log('check');
+    var leftPos = container.position().left;
+    console.log(leftPos);
+    if(leftPos>=0) {
+      return;
+    }
+    var posNew = leftPos+640;
+    container.css('left',posNew+'px');
+  });
+});
+</script>
 <% end %>

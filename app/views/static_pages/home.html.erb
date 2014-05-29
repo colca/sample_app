@@ -10,19 +10,12 @@
     </aside>
     <div class="span10">
       <br>
+
       <h3>Videos From Followed Dancers</h3>
       <%= render 'shared/video' %>
  
-      <h3>Videos from Genre</h3>
      
-      <div class="category-feeds"> 
-      <% if @category1_feeds.any? %>
-        <%= @category1_feeds.count %> 
-       <ul class="list-inline" id="dancer-videos">
-       <%= render partial: 'shared/video_item', collection: @category1_feeds %>
-      </ul>
-      <% end %>
-      </div>
+
 
     </div>
   </div>
