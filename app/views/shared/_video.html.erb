@@ -1,14 +1,18 @@
 <% if @dancer_video_feeds.any? %>
+<div class="J-list">
+      <div class="list-title">
+        <h3>Videos From Your Followed Dancers</h3>
+      </div>
+ 
       <div class="button-left" id="df-left-button"></div>
       <div class="button-right" id="df-right-button"></div>
   <div id="dancer-feeds">
-
-
       <ul class="video-feeds" id="dancer-feeds-container">
         <%= render partial: 'shared/video_item', collection: @dancer_video_feeds %>
       </ul>
-
   </div>
+  <%= will_paginate @dancer_video_feeds %>
+</div>
 <script>
 $(document).ready(function(){
   var container = $('#dancer-feeds-container');
@@ -32,3 +36,4 @@ $(document).ready(function(){
 });
 </script>
 <% end %>
+

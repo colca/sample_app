@@ -2,7 +2,7 @@
   <%= link_to video_item.dancer, video_item.dancer %>
   <br>
   <span class="video">
-    <iframe <%= video_item.embed_html.gsub(/640/, '160').gsub(/360/,'90') %>></iframe>
+    <iframe <%= video_item.embed_html.gsub(/640/, '360').gsub(/360/,'180') %>></iframe>
   </span>
 
 </li>

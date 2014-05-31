@@ -193,10 +193,14 @@ aside {
 .gravatar {
   float: left;
   margin-right: 10px;
+  margin-top: 20px;
+  margin-left: 17px;
 }
+
 
 .stats { 
   overflow: auto;
+  margin-top: 10px;
   a {
     float: left;
     padding: 0 10px;
@@ -314,9 +318,17 @@ aside {
 
 /* Video List */
 
+J-list {
+  list-title {
+    margin-top: 20px;
+    left: 0px;
+  }
+}
+
 #dancer-feeds {
+  margin-top: 30px;
   position: relative;
-  left: 50px;
+  left: 0px;
   width: 646px;
   height: 200px;
   overflow: hidden;
@@ -327,7 +339,7 @@ aside {
     list-style: none;
     li {
       float: left;
-      width: 160px;
+      width: 200px;
       margin: 2px;
     }
   }
@@ -336,7 +348,7 @@ aside {
 #df-left-button {
   height:0;
   width: 0;
-  top: 70px;
+  top: 140px;
   margin: 0 30px 0 -50px;
   position: relative;
   border-top: 10px solid transparent;
@@ -346,7 +358,54 @@ aside {
 
 #df-right-button {
   float: right;
+  margin-right: 20px;
   height: 0;
+  width: 0;
+  top: 70px;
+  position: relative;
+  margin: 0 -50px 0 30px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 7px solid #ddd;
+}
+
+/* Category 1 video list */
+
+#category1-feeds {
+  margin-top: 30px;
+  position: relative;
+  left: 0px;
+  width: 646px;
+  height: 200px;
+  overflow: hidden;
+  #cat1-feeds-container {
+    width: 100000px;
+    position: absolute;
+    left: 0px;
+    list-style: none;
+    li {
+      float: left;
+      width: 200px;
+      margin: 2px;
+    }
+  }
+}
+
+#c1f-left-button {
+  height:0;
+  width: 0;
+  top: 140px;
+  margin: 0 30px 0 -50px;
+  position: relative;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 7px solid #ddd;
+}
+
+#c1f-right-button {
+  float: right;
+  height: 0;
+  margin-right: 20px;
   width: 0;
   top: 70px;
   position: relative;

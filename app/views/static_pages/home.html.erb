@@ -1,6 +1,6 @@
 <% if signed_in? %>
   <div class="row">
-    <aside class="span2">
+    <aside class="span3">
       <section>
          <%= render 'shared/user_info' %>
       </section>
@@ -8,19 +8,14 @@
          <%= render 'shared/stats' %>
       </section>
     </aside>
-    <div class="span10">
-      <br>
-
-      <h3>Videos From Followed Dancers</h3>
+    <div class="span9">
       <%= render 'shared/video' %>
- 
-     
 
-
+      <%= render 'shared/cat1_video' %>
+        
     </div>
   </div>
 <% else %>
-
     <div id="welcome-title">
       <h1>Welcome to Danceflix</h1>
     </div>
@@ -36,6 +31,5 @@
                                 class: "btn btn-large btn-primary", id: "signup-btn" %>
     </div>
  
-
 <% end %>
 

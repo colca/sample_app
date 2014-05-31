@@ -1,9 +1,3 @@
 
-      <div class="category-feeds"> 
-      <% if @category1_feeds.any? %>
-        <%= @category1_feeds.count %> 
-       <ul class="list-inline" id="dancer-videos">
-       <%= render partial: 'shared/video_item', collection: @category1_feeds %>
-      </ul>
-      <% end %>
-      </div>
+
+      <%= render 'shared/cat1_video' %>
