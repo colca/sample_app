@@ -1,12 +1,11 @@
-<% if @category1_feeds.any? %>
 <div class="J-list">
       <div class="list-title">
         <h3>Hiphop Videos</h3>
       </div>
       <div class="button-left" id="c1f-left-button"></div>
       <div class="button-right" id="c1f-right-button"></div>
-  <div id="category1-feeds">
-      <ul class="video-feeds" id="cat1-feeds-container">
+  <div class="video-feeds" id="category1-feeds">
+      <ul class="video-feeds-container" id="cat1-feeds-container">
         <%= render partial: 'shared/video_item', collection: @category1_feeds %>
       </ul>
   </div>
@@ -18,19 +17,19 @@ $(document).ready(function(){
     console.log('check');
     console.log(container.length);
     var leftPos = container.position().left;
-    var posNew = leftPos-640;
+    var posNew = leftPos-746;
     container.css('left',posNew+'px');
   });
   $('#c1f-left-button').on('click',function(){
     console.log('check');
     var leftPos = container.position().left;
     console.log(leftPos);
-    if(leftPos>=0) {
+    if(leftPos>=-12) {
       return;
     }
-    var posNew = leftPos+640;
+    var posNew = leftPos+746;
     container.css('left',posNew+'px');
   });
 });
 </script>
-<% end %>
+

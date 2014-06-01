@@ -318,101 +318,61 @@ aside {
 
 /* Video List */
 
-J-list {
-  list-title {
+.J-list {
+  .list-title {
     margin-top: 20px;
-    left: 0px;
+    left: 12px;
+    height: 5px;
   }
+  .button-left {
+    height:0;
+    width: 0;
+    top: 105px;
+    margin: 0 20px 0 -50px;
+    position: relative;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 10px solid #0099FF;
+  }
+  .button-right {
+    left: 750px;
+    margin-left: 30px;
+    height: 0;
+    width: 0;
+    top: 65px;
+    position: relative;
+    margin: 0 -50px 0 20px;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 10px solid #0099FF;
 }
 
-#dancer-feeds {
-  margin-top: 30px;
+}
+
+.video-feeds {
+  margin-top: -50px;
+  padding-bottom: 80px;
   position: relative;
-  left: 0px;
-  width: 646px;
-  height: 200px;
+  left: -12px;
+  width: 750px;
+  height: 180px;
   overflow: hidden;
-  #dancer-feeds-container {
+  .video-feeds-container {
     width: 100000px;
     position: absolute;
-    left: 0px;
+    left: -12px;
     list-style: none;
     li {
       float: left;
-      width: 200px;
+      width: 180px;
       margin: 2px;
+      p {
+      float: left;
+      }
     }
   }
 }
 
-#df-left-button {
-  height:0;
-  width: 0;
-  top: 140px;
-  margin: 0 30px 0 -50px;
-  position: relative;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 7px solid #ddd;
-}
 
-#df-right-button {
-  float: right;
-  margin-right: 20px;
-  height: 0;
-  width: 0;
-  top: 70px;
-  position: relative;
-  margin: 0 -50px 0 30px;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 7px solid #ddd;
-}
-
-/* Category 1 video list */
-
-#category1-feeds {
-  margin-top: 30px;
-  position: relative;
-  left: 0px;
-  width: 646px;
-  height: 200px;
-  overflow: hidden;
-  #cat1-feeds-container {
-    width: 100000px;
-    position: absolute;
-    left: 0px;
-    list-style: none;
-    li {
-      float: left;
-      width: 200px;
-      margin: 2px;
-    }
-  }
-}
-
-#c1f-left-button {
-  height:0;
-  width: 0;
-  top: 140px;
-  margin: 0 30px 0 -50px;
-  position: relative;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 7px solid #ddd;
-}
-
-#c1f-right-button {
-  float: right;
-  height: 0;
-  margin-right: 20px;
-  width: 0;
-  top: 70px;
-  position: relative;
-  margin: 0 -50px 0 30px;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 7px solid #ddd;
-}
 
 

@@ -9,9 +9,12 @@
       </section>
     </aside>
     <div class="span9">
-      <%= render 'shared/video' %>
-
-      <%= render 'shared/cat1_video' %>
+       <% if @dancer_video_feeds.any? %>
+         <%= render 'shared/video' %>
+       <% end %>
+       <% if @category1_feeds.any? %>
+         <%= render 'shared/cat1_video' %>
+       <% end %>
         
     </div>
   </div>

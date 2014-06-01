@@ -1,3 +1,4 @@
+
 <div class="J-list">
       <div class="list-title">
         <h3>Videos From Your Followed Dancers</h3>
@@ -19,17 +20,17 @@ $(document).ready(function(){
     console.log('check');
     console.log(container.length);
     var leftPos = container.position().left;
-    var posNew = leftPos-746;
+    var posNew = leftPos-640;
     container.css('left',posNew+'px');
   });
   $('#df-left-button').on('click',function(){
     console.log('check');
     var leftPos = container.position().left;
     console.log(leftPos);
-    if(leftPos>=-12) {
+    if(leftPos>=0) {
       return;
     }
-    var posNew = leftPos+746;
+    var posNew = leftPos+640;
     container.css('left',posNew+'px');
   });
 });

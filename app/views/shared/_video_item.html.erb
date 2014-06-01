@@ -1,8 +1,22 @@
 <li id="<%= video_item.vid %>">
-  <%= link_to video_item.dancer, video_item.dancer %>
-  <br>
   <span class="video">
     <iframe <%= video_item.embed_html.gsub(/640/, '360').gsub(/360/,'180') %>></iframe>
+  </span>
+  <p>
+    <div class="feeds_title">
+       <% video_item.title %>
+    </div>
+    <div class="feeds_dancer">
+       by <%= link_to video_item.dancer, video_item.dancer %> 
+    </div>
+    <div class="feeds_viewCount">
+       <%= video_item.view_count %> views
+    </div>
+  </p>
+  <p>
+    <div class="feeds_timestamp">
+       Posted <%= time_ago_in_words(video_item.created_at) %> ago
+    </div>
   </span>
 
 </li>
