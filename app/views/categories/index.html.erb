@@ -1,27 +1,62 @@
 <% provide(:title, 'All Dance Categories') %>
-<h1>Dance Categories</h1>
- <ul>
-   
-  <% @categories.each do |category| %>
-    <li>
-    <h4><b> <%= link_to category.cName, category %></b> </h4><br>
-    <% if signed_in? %>
-      <% if @user.followingCat?(category) %>
-        <%= form_for(@user.user_cat_relationships.find_by_category_id(category), html: { method: :delete }) do |f| %>
-           <%= f.submit "Unfollow", class: "btn btn-large" %>
-        <% end %>
+<div id="genre-title">
+<h1>Follow Genres Here</h1>
+</div>
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <% tabIndex = 1 %>
+    <% @categories.each do |category| %>
+      <% if category.id == 1 %>
+         <li class="active"><a href="#tab<%= tabIndex %>" data-toggle="tab"><%= category.cName %></a></li>
+         <% tabIndex += 1 %>
       <% else %>
-        <%= form_for(@user.user_cat_relationships.build(category_id: category.id)) do |f| %>
-           <div><%= f.hidden_field :category_id %></div>
-           <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
-        <% end %>
+         <li><a href="#tab<%= tabIndex %>" data-toggle="tab"><%= category.cName %></a></li>
+         <% tabIndex += 1 %>
       <% end %>
     <% end %>
-    </li>
-  <% end %>
- </ul>
+    <% tabIndex = 1 %>
+  </ul>
+ 
+  <div class="tab-content">
+     <% if signed_in? %>
+       <!-- Loop each category -->
+       <% @categories.each do |category| %>
+         <!-- Tab-pane div head-->
+         <% if category.id == 1 %>
+           <div class="tab-pane active" id="tab<%= tabIndex %>">
+              <% tabIndex += 1 %>
+         <% else %>
+           <div class="tab-pane" id="tab<%= tabIndex %>">
+              <% tabIndex += 1 %>
+         <% end %>
+             <!-- Unfollow Button if user already followed this category -->
+             <% if @user.followingCat?(category) %>
+               <%= form_for(@user.user_cat_relationships.find_by_category_id(category), html: { method: :delete }) do |f| %>
+               <%= f.submit "Unfollow #{category.cName} Genre", class: "btn btn-large" %>
+               <% end %>
+             <!-- Follow Button if user hasn't followed this category-->
+             <% else %>
+               <%= form_for(@user.user_cat_relationships.build(category_id: category.id)) do |f| %>
+               <div><%= f.hidden_field :category_id %></div>
+               <%= f.submit "Follow #{category.cName} Genre", class: "btn btn-large btn-primary" %>
+               <% end %>
+             <% end %>
+         
+             <!-- -->
+             <% if category.dancers.any? %>
+               <% @dancers = category.dancers.paginate(page: params[:page]) %>
+               <h3>Dancers (<%= category.dancers.count %>)</h3>
+               <ul class="dancesr">
+                 <%= render @dancers %>
+               </ul>
+               <%= will_paginate @dancers %>
+             <% end %>
 
+           </div>
+       <% end %>
+     <% end %>
+  <div>
 
+</div>
 
-
-  

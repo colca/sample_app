@@ -8,3 +8,28 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
+ <ul class="dl-horizontal" id="genre-list">
+  <% @categories.each do |category| %>
+    <li>
+    <h4><b> <%= link_to category.cName, category %></b> </h4><br>
+    <% if signed_in? %>
+      <% if @user.followingCat?(category) %>
+        <%= form_for(@user.user_cat_relationships.find_by_category_id(category), html: { method: :delete }) do |f| %>
+           <%= f.submit "Unfollow", class: "btn btn-large" %>
+        <% end %>
+      <% else %>
+        <%= form_for(@user.user_cat_relationships.build(category_id: category.id)) do |f| %>
+           <div><%= f.hidden_field :category_id %></div>
+           <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+        <% end %>
+      <% end %>
+    <% end %>
+    </li>
+  <% end %>
+ </ul>
+
+
+
+
+  
