@@ -12,7 +12,7 @@
        <% if @dancer_video_feeds.any? %>
          <%= render 'shared/video' %>
        <% end %>
-       <% if @category1_feeds.any? %>
+       <% if current_user.followingCatId?(1) && @category1_feeds.any? %>
          <%= render 'shared/cat1_video' %>
        <% end %>
         

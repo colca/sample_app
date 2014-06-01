@@ -69,6 +69,10 @@ class User < ActiveRecord::Base
     user_cat_relationships.find_by_category_id(category.id)
   end
 
+  def followingCatId?(category_id)
+    user_cat_relationships.find_by_category_id(category_id)
+  end
+
   def unfollowCat!(category)
     user_cat_relationships.find_by_category_id(category.id).destroy
   end
