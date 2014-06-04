@@ -15,7 +15,16 @@
        <% if current_user.followingCatId?(1) && @category1_feeds.any? %>
          <%= render 'shared/cat1_video' %>
        <% end %>
-        
+       <% if current_user.followingCatId?(2) && @category2_feeds.any? %>
+         <%= render 'shared/cat2_video' %>
+       <% end %>
+       <% if current_user.followingCatId?(3) && @category3_feeds.any? %>
+         <%= render 'shared/cat3_video' %>
+       <% end %>        
+       <% if current_user.followingCatId?(4) && @category4_feeds.any? %>
+         <%= render 'shared/cat4_video' %>
+       <% end %>
+
     </div>
   </div>
 <% else %>

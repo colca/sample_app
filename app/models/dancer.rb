@@ -9,4 +9,5 @@ class Dancer < ActiveRecord::Base
   validates :category_id, presence: true
   validates :name, presence: true, uniqueness: true
 
+  default_scope order: 'dancers.video_count DESC'
 end

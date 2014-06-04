@@ -8,10 +8,10 @@
     <% tabIndex = 1 %>
     <% @categories.each do |category| %>
       <% if category.id == 1 %>
-         <li class="<%= 'active' if params[:tab] == 'tab' + tabIndex.to_s %>"><a href="#tab<%= tabIndex %>" data-toggle="tab"><%= category.cName %></a></li>
+         <li class="active"><a href="#tab<%= tabIndex %>" data-toggle="tab"><%= category.cName %></a></li>
          <% tabIndex += 1 %>
       <% else %>
-         <li class="<%= 'active' if params[:tab] == 'tab' + tabIndex.to_s %>"><a href="#tab<%= tabIndex %>" data-toggle="tab"><%= category.cName %></a></li>
+         <li><a href="#tab<%= tabIndex %>" data-toggle="tab"><%= category.cName %></a></li>
          <% tabIndex += 1 %>
       <% end %>
     <% end %>
@@ -24,10 +24,10 @@
        <% @categories.each do |category| %>
          <!-- Tab-pane div head-->
          <% if category.id == 1 %>
-           <div class="<%= if(params[:tab] == 'tab1' || !params[:tab]) then 'tab-pane active' else 'tab-pane' end%>" id="tab<%= tabIndex %>">
+           <div class="tab-pane active" id="tab<%= tabIndex %>">
               <% tabIndex += 1 %>
          <% else %>
-           <div class="<%= if params[:tab] == ('tab1' + tabIndex.to_s) then 'tab-pane active' else 'tab-pane' end%>" id="tab<%= tabIndex %>">
+           <div class="tab-pane" id="tab<%= tabIndex %>">
               <% tabIndex += 1 %>
          <% end %>
              <!-- Unfollow Button if user already followed this category -->
@@ -59,15 +59,19 @@
   <div>
 
 </div>
-
 <script>
-var url = document.location.toString();
-if (url.match('#')) {
-    $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-} 
+    $('#categories-tabs a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
 
-// Change hash for page-reload
-$('.nav-tabs a').on('shown', function (e) {
-    window.location.hash = e.target.hash;
-})
+    // store the currently selected tab in the hash value
+    $("ul.nav-tabs > li > a").on("shown.bs.tab", function (e) {
+        var id = $(e.target).attr("href").substr(1);
+        window.location.hash = id;
+    });
+
+    // on load of the page: switch to the currently selected tab
+    var hash = window.location.hash;
+    $('#categories-tabs a[href="' + hash + '"]').tab('show');
 </script>

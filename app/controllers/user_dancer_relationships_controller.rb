@@ -6,13 +6,13 @@ class UserDancerRelationshipsController < ApplicationController
     @dancer = Dancer.find(params[:user_dancer_relationship][:dancer_id])
     @category = Category.find(@dancer.category_id)
     current_user.followDancer!(@dancer)
-    redirect_to @category
+    redirect_to categories_path
   end
 
   def destroy
     @dancer = UserDancerRelationship.find(params[:id]).dancer
     @category = Category.find(@dancer.category_id)
     current_user.unfollowDancer!(@dancer)
-    redirect_to @category
+    redirect_to categories_path
   end
 end
