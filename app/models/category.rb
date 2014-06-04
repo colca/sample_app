@@ -24,7 +24,7 @@ class Category < ActiveRecord::Base
 
   has_many :users, through: :user_cat_relationships, source: :user
 
-  accepts_nested_attributes_for :user_cat_relationships
+  accepts_nested_attributes_for :user_cat_relationships, allow_destroy: true
 
 
 end

@@ -1,6 +1,6 @@
 <% provide(:title, 'All Dance Categories') %>
 <div id="genre-title">
-<h1>Follow Genres Here</h1>
+<h1>Follow Genres/Dancers You Love</h1>
 </div>
 
 <div class="tabbable">
@@ -27,47 +27,27 @@
            <div class="<%= if(params[:tab] == 'tab1' || !params[:tab]) then 'tab-pane active' else 'tab-pane' end%>" id="tab<%= tabIndex %>">
               <% tabIndex += 1 %>
          <% else %>
-           <div class="<%= if params[:tab] == ('tab1' + tabIndex.to_s) then 'tab-pane active' else 'tab-pane' end%>" id="tab<%= tabIndex %>">
+           <div class="<%= if params[:tab] == ('tab' + tabIndex.to_s) then 'tab-pane active' else 'tab-pane' end%>" id="tab<%= tabIndex %>">
               <% tabIndex += 1 %>
          <% end %>
-             <!-- Unfollow Button if user already followed this category -->
-             <% if @user.followingCat?(category) %>
-               <%= form_for(@user.user_cat_relationships.find_by_category_id(category), html: { method: :delete }) do |f| %>
-               <%= f.submit "Unfollow #{category.cName} Genre", class: "btn btn-large" %>
-               <% end %>
-             <!-- Follow Button if user hasn't followed this category-->
-             <% else %>
-               <%= form_for(@user.user_cat_relationships.build(category_id: category.id)) do |f| %>
-               <div><%= f.hidden_field :category_id %></div>
-               <%= f.submit "Follow #{category.cName} Genre", class: "btn btn-large btn-primary" %>
-               <% end %>
-             <% end %>
-         
+            <!-- Give value to @category for form use -->
+             <% @category = category %>
+             <%= render "follow_cat_form" %>
              <!-- -->
              <% if category.dancers.any? %>
-               <% @dancers = category.dancers.paginate(page: params[:page]) %>
+               <% @dancers = category.dancers.paginate(page: params[:"#{category.cName}" ]) %>
                <h3>Dancers (<%= category.dancers.count %>)</h3>
                <ul class="dancesr">
                  <%= render @dancers %>
                </ul>
-               <%= will_paginate @dancers %>
+               <%= will_paginate @dancers,:param_name => :"#{category.cName}" %>
              <% end %>
 
            </div>
        <% end %>
      <% end %>
-  <div>
+  </div>
 
 </div>
 
-<script>
-var url = document.location.toString();
-if (url.match('#')) {
-    $('.nav-tabs a[href=#'+url.split('#')[1]+']').tab('show') ;
-} 
 
-// Change hash for page-reload
-$('.nav-tabs a').on('shown', function (e) {
-    window.location.hash = e.target.hash;
-})
-</script>

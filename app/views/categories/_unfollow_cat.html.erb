@@ -1,4 +1,5 @@
-<%= form_for(current_user.user_cat_relationships.find_by_category_id(@category),
-             html: { method: :delete }) do |f| %>
-  <%= f.submit "Unfollow", class: "btn btn-large" %>
+<%= form_for(current_user.user_cat_relationships.find_by_category_id(@category), 
+             html: { method: :delete }, 
+             remote: true) do |f| %>
+<%= f.submit "Unfollow #{@category.cName} Genre", class: "btn btn-large" %>
 <% end %>

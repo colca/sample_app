@@ -1,7 +1,9 @@
 <div id="follow_cat_form">
-  <% if current_user.followingCat?(@category) %>
-    <%= render 'unfollow_cat' %>
-  <% else %>
-    <%= render 'follow_cat' %>
-  <% end %>
+ <!-- Unfollow Button if user already followed this category -->
+ <% if @user.followingCat?(@category) %>
+   <%= render 'unfollow_cat' %>
+ <!-- Follow Button if user hasn't followed this category-->
+ <% else %>
+   <%= render 'follow_cat' %>
+ <% end %>
 </div>

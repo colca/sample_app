@@ -1,0 +1,2 @@
+
+$("#follow_cat_form").html("<%= escape_javascript(render('categories/unfollow_cat')).html_safe %>")

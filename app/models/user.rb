@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   has_many :user_dancer_relationships, foreign_key: "user_id", dependent: :destroy
   has_many :dancers, through: :user_dancer_relationships, source: :dancer
   
-  accepts_nested_attributes_for :categories
+#  accepts_nested_attributes_for :categories
 
   before_save { |user| user.email = email.downcase } 
   before_save :create_remember_token
