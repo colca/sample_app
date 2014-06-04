@@ -1,18 +1,11 @@
 <li>
-  <div class="dancer">
+  <div class="dancer-info">
   <span class="content"><%= dancer.name %>:  <%= dancer.video_count %> Videos
+  </span>
   </div>
   <% if signed_in? %>
-    <% if @user.followingDancer?(dancer) %>
-      <%= form_for(@user.user_dancer_relationships.find_by_dancer_id(dancer), html: { method: :delete }, remote: true) do |f| %>
-        <%= f.submit "Unfollow", class: "btn btn-small" %>
-      <% end %>
-    <% else %>
-      <%= form_for(@user.user_dancer_relationships.build(dancer_id: dancer.id), remote: true) do |f| %>
-        <div><%= f.hidden_field :dancer_id %></div>
-        <%= f.submit "Follow", class: "btn btn-small btn-primary" %>
-      <% end %>
-    <% end %>
+    <% @dancer = dancer %>
+    <%= render "dancers/follow_dancer_form" %>
   <% end %>
-  </span>
+
 </li>

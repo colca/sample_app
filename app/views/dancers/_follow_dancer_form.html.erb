@@ -1,0 +1,9 @@
+<div id="<%= @dancer.id %>">
+  <div class="follow_dancer_form">
+  <% if @user.followingDancer?(@dancer) %>
+    <%= render 'dancers/unfollow_dancer' %>
+  <% else %>
+    <%= render 'dancers/follow_dancer' %>
+  <% end %>
+  </div>
+</div>

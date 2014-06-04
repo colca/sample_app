@@ -37,7 +37,7 @@
              <% if category.dancers.any? %>
                <% @dancers = category.dancers.paginate(page: params[:"#{category.cName}" ]) %>
                <h3>Dancers (<%= category.dancers.count %>)</h3>
-               <ul class="dancesr">
+               <ul class="dancers">
                  <%= render @dancers %>
                </ul>
                <%= will_paginate @dancers,:param_name => :"#{category.cName}" %>

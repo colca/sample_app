@@ -5,6 +5,8 @@ class CategoriesController < ApplicationController
     @user = current_user
     @category
     @dancers   
+    @dancer
+    @dancer_index
   end
 
   def show
