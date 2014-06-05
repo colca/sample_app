@@ -1,20 +1,36 @@
-<% provide(:title, @category.cName) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= @category.cName %>
-      </h1>
-    </section>
-  </aside>
-  <div class="span8">
-    <%= render 'follow_cat_form' if signed_in? %>
-    <% if @category.dancers.any? %>
-       <h3>Dancers (<%= @category.dancers.count %>)</h3>
-       <ul class="dancesr">
-         <%= render @dancers %>
-       </ul>
-       <%= will_paginate @dancers %>
-    <% end %>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span3">
+      <section>
+         <%= render 'shared/user_info' %>
+      </section>
+      <secton>
+         <%= render 'shared/stats' %>
+      </section>
+    </aside>
+    <div class="span9">
+
+       <% if @category_feeds.any? %>
+         <%= render 'shared/cat_video' %>
+       <% end %>
+
+    </div>
   </div>
-</div>
+<% else %>
+    <div id="welcome-title">
+      <h1>Welcome to Danceflix</h1>
+    </div>
+  
+    <div id="welcome-subtitle"> 
+    <h2>
+      Your Personalized Dance Video Station
+    </h2>
+    </div>
+
+    <div class="span12" style="text-align:center">
+    <%= link_to "Sign up now!", signup_path, 
+                                class: "btn btn-large btn-primary", id: "signup-btn" %>
+    </div>
+ 
+<% end %>
+

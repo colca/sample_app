@@ -134,7 +134,7 @@ p {
 /* footer */
 
 footer {
-  margin-top: 250px;
+  margin-top: 260px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: $grayLight;
@@ -377,4 +377,16 @@ aside {
 
 #genre-title {
   margin-bottom: 50px;
+}
+
+/* Category Video List */
+
+.video-feeds-vertical {
+  margin-top: 50px;
+  padding-bottom: 80px;
+  position: relative;
+  left: -12px;
+  ul {
+    list-style: none;
+  }
 }

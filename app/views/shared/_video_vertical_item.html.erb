@@ -1,0 +1,20 @@
+<li id="<%= @feed.vid %>">
+  <span class="video">
+    <iframe <%= @feed.embed_html %>></iframe>
+  </span>
+    <div class="feeds_title">
+       <% @feed.title %>
+    </div>
+    <div class="feeds_dancer">
+       by <%= link_to @feed.dancer, @feed.dancer %> 
+    </div>
+    <div class="feeds_viewCount">
+       <%= @feed.view_count %> views
+    </div>
+    <div class="feeds_timestamp">
+       Posted <%= time_ago_in_words(@feed.created_at) %> ago
+    </div>
+  </span>
+  <br>
+
+</li>

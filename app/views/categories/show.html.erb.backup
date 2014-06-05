@@ -1,0 +1,20 @@
+<% provide(:title, @category.cName) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @category.cName %>
+      </h1>
+    </section>
+  </aside>
+  <div class="span8">
+    <%= render 'follow_cat_form' if signed_in? %>
+    <% if @category.dancers.any? %>
+       <h3>Dancers (<%= @category.dancers.count %>)</h3>
+       <ul class="dancesr">
+         <%= render @dancers %>
+       </ul>
+       <%= will_paginate @dancers %>
+    <% end %>
+  </div>
+</div>

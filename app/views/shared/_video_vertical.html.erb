@@ -1,0 +1,36 @@
+<div class="J-list">
+      <div class="list-title">
+        <h3>Videos From Your Followed Dancers</h3>
+      </div>
+ 
+      <div class="button-left" id="df-left-button"></div>
+      <div class="button-right" id="df-right-button"></div>
+  <div class="video-feeds" id="dancer-feeds">
+      <ul class="video-feeds-container" id="dancer-feeds-container">
+        <%= render partial: 'shared/video_item', collection: @dancer_video_feeds %>
+      </ul>
+  </div>
+  <!--%= will_paginate @dancer_video_feeds %-->
+</div>
+<script>
+$(document).ready(function(){
+  var container = $('#dancer-feeds-container');
+  $('#df-right-button').on('click',function(){
+    console.log('check');
+    console.log(container.length);
+    var leftPos = container.position().left;
+    var posNew = leftPos-746;
+    container.css('left',posNew+'px');
+  });
+  $('#df-left-button').on('click',function(){
+    console.log('check');
+    var leftPos = container.position().left;
+    console.log(leftPos);
+    if(leftPos>=-12) {
+      return;
+    }
+    var posNew = leftPos+746;
+    container.css('left',posNew+'px');
+  });
+});
+</script>

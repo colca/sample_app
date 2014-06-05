@@ -1,0 +1,15 @@
+<div class="J-list">
+      <div class="list-title">
+        <h3><%= @category.cName %> Videos</h3>
+      </div>
+  <div class="video-feeds-vertical">
+      <ul class="video-feeds-container" id="cat1-feeds-container">
+         <% @category_feeds.each do |feed| %>
+           <% @feed = feed %>
+           <%= render "shared/video_vertical_item" %>
+         <% end %>
+      </ul>
+      <%= will_paginate @category_feeds %>
+  </div>
+</div>
+
