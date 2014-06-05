@@ -24,6 +24,12 @@
        <% if current_user.followingCatId?(4) && @category4_feeds.any? %>
          <%= render 'shared/cat4_video' %>
        <% end %>
+       <% if current_user.followingCatId?(6) && @category6_feeds.any? %>
+         <%= render 'shared/cat4_video' %>
+       <% end %>
+       <% if current_user.followingCatId?(7) && @category7_feeds.any? %>
+         <%= render 'shared/cat4_video' %>
+       <% end %>
 
     </div>
   </div>

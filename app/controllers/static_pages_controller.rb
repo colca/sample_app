@@ -8,6 +8,8 @@ class StaticPagesController < ApplicationController
       @category2_feeds = current_user.categoryVideos(2).paginate(page: params[:page])
       @category3_feeds = current_user.categoryVideos(3).paginate(page: params[:page])
       @category4_feeds = current_user.categoryVideos(4).paginate(page: params[:page])
+      @category6_feeds = current_user.categoryVideos(6).paginate(page: params[:page])
+      @category7_feeds = current_user.categoryVideos(7).paginate(page: params[:page])
     end
   end
 
